@@ -11,10 +11,10 @@ const Header = () => {
             <a href="/link">Company</a>
           </div>
 
-          <div class="header1__collections-nav">
-            <a href="/link" class="header1__collection-link">
-              Link top <i class="fas fa-chevron-down"></i>
-              <ul class="collection-link__sub-links">
+          <div className="header1__collections-nav">
+            <div href="/link" className="header1__collection-link">
+              Link top <i className="fas fa-chevron-down"></i>
+              <ul className="collection-link__sub-links">
                 <li>
                   <a href="#">Link</a>
                 </li>
@@ -28,11 +28,11 @@ const Header = () => {
                   <a href="#">Link</a>
                 </li>
               </ul>
-            </a>
-            <a href="/link" class="header1__collection-link">
+            </div>
+            <a href="/link" className="header1__collection-link">
               Link
             </a>
-            <a href="/link" class="header1__collection-link">
+            <a href="/link" className="header1__collection-link">
               Link
             </a>
           </div>
@@ -41,7 +41,7 @@ const Header = () => {
           <form>
             <input type="search" name="q" type="hidden" />
             <button aria-label="Search" href="/cart">
-              <i class="fas fa-search" aria-hidden="true"></i>
+              <i className="fas fa-search" aria-hidden="true"></i>
             </button>
           </form>
           <a>
