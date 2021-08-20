@@ -3,12 +3,11 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import Client from "shopify-buy";
 import reportWebVitals from "./reportWebVitals";
-import { render } from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import store from './store/index';
 import "./index.scss";
 
-const store = createStore(rootReducer);
+//const store = createStore(rootReducer);
 
 const client = Client.buildClient({
   storefrontAccessToken: process.env.REACT_APP_API_KEY,
