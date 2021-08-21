@@ -8,7 +8,8 @@ import "./Header.scss";
 const Header = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.sideNav.opened);
-  const [state, setstate] = useState(initialState);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openSearchBar, setOpenSearchBar] = useState(false);
 
   const showNav = () => {
     dispatch(actions.showSideNav());
@@ -18,6 +19,17 @@ const Header = () => {
     dispatch(actions.hideSideNav());
   };
 
+  const openDrawerHandler = () => {
+    setOpenDrawer(!openDrawer);
+  };
+
+  const openSearchBarHandler = (e) => {
+    e.preventDefault();
+    setOpenSearchBar(!openSearchBar);
+  };
+
+  console.log(openSearchBar);
+
   return (
     <>
       <AnnouncementBar />
@@ -26,45 +38,51 @@ const Header = () => {
           <div className="header1__logo-image">
             <a href="/link">
               <img
-                srcset="//cdn.shopify.com/s/files/1/0581/1503/1247/files/Pngtree_golden_classical_european_wedding_newcomer_4997848_3_80x.png?v=1625842909 1x, //cdn.shopify.com/s/files/1/0581/1503/1247/files/Pngtree_golden_classical_european_wedding_newcomer_4997848_3_80x@2x.png?v=1625842909 2x"
+                srcSet="//cdn.shopify.com/s/files/1/0581/1503/1247/files/Pngtree_golden_classical_european_wedding_newcomer_4997848_3_80x.png?v=1625842909 1x, //cdn.shopify.com/s/files/1/0581/1503/1247/files/Pngtree_golden_classical_european_wedding_newcomer_4997848_3_80x@2x.png?v=1625842909 2x"
                 alt="Alexander store logo"
               />
             </a>
           </div>
 
           <div className="header1__collections-nav">
-            <div href="/link" className="header1__collection-link">
-              Link top <i className="fas fa-chevron-down"></i>
+            <div className="header1__collection-link pointer">
+              Catalog<i className="fas fa-chevron-down"></i>
               <ul className="collection-link__sub-links">
                 <li>
-                  <a href="#">Link</a>
+                  <a href="#">Men</a>
                 </li>
                 <li>
-                  <a href="#">Link</a>
+                  <a href="#">Women</a>
                 </li>
                 <li>
-                  <a href="#">Link</a>
-                </li>
-                <li>
-                  <a href="#">Link</a>
+                  <a href="#">Hats</a>
                 </li>
               </ul>
             </div>
             <a href="/link" className="header1__collection-link">
-              Link
+              Home
             </a>
             <a href="/link" className="header1__collection-link">
-              Link
+              Contact
             </a>
           </div>
         </div>
         <div className="header1__collections-nav">
-          <form>
-            <input type="search" name="q" type="hidden" />
-            <button aria-label="Search" href="/cart">
-              <i className="fas fa-search" aria-hidden="true"></i>
+          <div className="form">
+            <form>
+              <input id="search" type="search" placeholder="search" name="q" className={`${openSearchBar ? "active" : ""}`} />
+            </form>
+            <button
+              onClick={openSearchBarHandler}
+              aria-label="Search"
+              href="/cart"
+            >
+              <i
+                className={`fas ${openSearchBar ? "fa-times" : "fa-search"}`}
+                aria-hidden="true"
+              ></i>
             </button>
-          </form>
+          </div>
           <a>
             <i className="fas fa-shopping-bag"></i>
           </a>
@@ -72,8 +90,53 @@ const Header = () => {
             <i className="fas fa-user"></i>
           </a>
         </div>
+
+        <div className="header1__collections-burger">
+          <div
+            onClick={openDrawerHandler}
+            class={`header1__collections-burger menu-btn ${
+              openDrawer ? "open" : ""
+            }`}
+          >
+            <div class="header1__collections-burger menu-btn__burger"></div>
+          </div>
+        </div>
+
+        <Drawer id={"navigation"} openDrawer={openDrawer}>
+          <ul className={`${openDrawer ? "drawer--active" : ""}`}>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Account</a>
+            </li>
+            <li>
+              <a href="#">Cart</a>
+            </li>
+            <li>
+              <a href="#">Search</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </Drawer>
       </header>
     </>
+  );
+};
+
+const Drawer = ({ children, openDrawer, id }) => {
+  return (
+    <div
+      id={id}
+      role="navigation"
+      className="drawer"
+      aria-hidden={openDrawer ? "false" : "true"}
+      tabIndex="0"
+    >
+      {children}
+    </div>
   );
 };
 
