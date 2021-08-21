@@ -1,14 +1,35 @@
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import * as actions from "../redux/side-nav/side-nav.action";
+
 import "./Header.scss";
-import { Link } from "react-router-dom";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const show = useSelector((state) => state.sideNav.opened);
+  const [state, setstate] = useState(initialState);
+
+  const showNav = () => {
+    dispatch(actions.showSideNav());
+  };
+
+  const hideSidewNav = () => {
+    dispatch(actions.hideSideNav());
+  };
+
   return (
     <>
       <AnnouncementBar />
       <header className="header header1">
         <div className="header1__logo">
           <div className="header1__logo-image">
-            <a href="/link">Company</a>
+            <a href="/link">
+              <img
+                srcset="//cdn.shopify.com/s/files/1/0581/1503/1247/files/Pngtree_golden_classical_european_wedding_newcomer_4997848_3_80x.png?v=1625842909 1x, //cdn.shopify.com/s/files/1/0581/1503/1247/files/Pngtree_golden_classical_european_wedding_newcomer_4997848_3_80x@2x.png?v=1625842909 2x"
+                alt="Alexander store logo"
+              />
+            </a>
           </div>
 
           <div className="header1__collections-nav">
@@ -45,7 +66,7 @@ const Header = () => {
             </button>
           </form>
           <a>
-            <i className="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-bag"></i>
           </a>
           <a href="/cart">
             <i className="fas fa-user"></i>

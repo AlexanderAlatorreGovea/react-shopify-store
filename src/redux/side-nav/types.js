@@ -1,0 +1,6 @@
+const SIDE_NAV_TYPES = {
+  OPEN_SIDENAV: "OPEN_SIDENAV",
+  CLOSE_SIDENAV: "CLOSE_SIDENAV",
+};
+
+export default SIDE_NAV_TYPES;

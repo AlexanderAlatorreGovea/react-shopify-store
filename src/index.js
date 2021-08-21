@@ -4,7 +4,9 @@ import App from "./App";
 import Client from "shopify-buy";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import store from './store/index';
+
+import store from './redux/store';
+
 import "./index.scss";
 
 //const store = createStore(rootReducer);

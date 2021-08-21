@@ -1,6 +1,6 @@
 .header1 {
-  background: #fcfcfc;
-  color: #1b1b1b;
+  background: var(--dark-gray);
+  color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,7 +8,7 @@
   height: 84px;
   a {
     text-decoration: none;
-    color: #2c2952;
+    color: var(--white);
     font-weight: 500;
     .fas {
       font-size: 17px;
@@ -52,11 +52,11 @@
       position: absolute;
       padding: 20px 0;
       min-width: 150px;
-      top: 30px;
+      top: 20px;
       left: 0;
 
       a {
-        color: #2c2952;
+        color: var(--black);
         font-size: 0.9rem;
         display: block;
         padding: 10px 20px;
@@ -76,6 +76,7 @@
   &__logo {
     display: flex;
     flex-direction: row;
+    align-items: center;
     &-image {
       margin-right: 2rem;
     }
@@ -94,10 +95,10 @@
       align-items: center;
     }
   }
-}
+} 
 
 .announcement__bar {
-  background-color: var(--dark-gray);
+  background-color: var(--black);
   &--message {
     color: var(--white);
     text-align: center;
