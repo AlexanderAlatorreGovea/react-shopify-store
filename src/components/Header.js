@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as actions from "../redux/side-nav/side-nav.action";
 
 import "./Header.scss";
 
+import { fetchPosts } from "../redux/posts/posts.actions";
+
 const Header = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.sideNav.opened);
+  const { posts, isFetching, errorMessage } = useSelector(
+    (state) => state.posts
+  );
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
@@ -28,8 +33,14 @@ const Header = () => {
     setOpenSearchBar(!openSearchBar);
   };
 
-  console.log(openSearchBar);
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
 
+  console.log("isFetching:", isFetching);
+  console.log("isFetching:", isFetching);
+  console.log("errorMessage:", errorMessage);
+  
   return (
     <>
       <AnnouncementBar />
@@ -70,7 +81,13 @@ const Header = () => {
         <div className="header1__collections-nav">
           <div className="form">
             <form>
-              <input id="search" type="search" placeholder="search" name="q" className={`${openSearchBar ? "active" : ""}`} />
+              <input
+                id="search"
+                type="search"
+                placeholder="search"
+                name="q"
+                className={`${openSearchBar ? "active" : ""}`}
+              />
             </form>
             <button
               onClick={openSearchBarHandler}
@@ -94,11 +111,11 @@ const Header = () => {
         <div className="header1__collections-burger">
           <div
             onClick={openDrawerHandler}
-            class={`header1__collections-burger menu-btn ${
+            className={`header1__collections-burger menu-btn ${
               openDrawer ? "open" : ""
             }`}
           >
-            <div class="header1__collections-burger menu-btn__burger"></div>
+            <div className="header1__collections-burger menu-btn__burger"></div>
           </div>
         </div>
 

@@ -3,4 +3,4 @@ const SIDE_NAV_TYPES = {
   CLOSE_SIDENAV: "CLOSE_SIDENAV",
 };
 
-export default SIDE_NAV_TYPES;
+export default SIDE_NAV_TYPES;  
