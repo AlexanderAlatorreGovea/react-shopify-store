@@ -5,14 +5,14 @@ import * as actions from "../redux/side-nav/side-nav.action";
 
 import "./Header.scss";
 
-import { fetchPosts } from "../redux/posts/posts.actions";
+//import { fetchPosts } from "../redux/posts/posts.actions";
 
 const Header = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.sideNav.opened);
-  const { posts, isFetching, errorMessage } = useSelector(
-    (state) => state.posts
-  );
+  // const { posts, isFetching, errorMessage } = useSelector(
+  //   (state) => state.posts
+  // );
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
@@ -33,13 +33,9 @@ const Header = () => {
     setOpenSearchBar(!openSearchBar);
   };
 
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
-
-  console.log("isFetching:", isFetching);
-  console.log("isFetching:", isFetching);
-  console.log("errorMessage:", errorMessage);
+  // useEffect(() => {
+  //   dispatch(fetchPosts());
+  // }, [dispatch]);
   
   return (
     <>
