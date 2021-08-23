@@ -1,6 +1,5 @@
-import HomePage from './pages/HomePage';
-
-import './index';
+import HomePage from "./pages/HomePage/HomePage";
+import "./index";
 
 function App() {
   return (

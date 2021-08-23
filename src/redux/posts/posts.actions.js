@@ -20,7 +20,6 @@ export const fetchPostsFailure = (errorMessage) => {
   };
 };
 
-/* THIS STARTS THE ENTIRE CODE AND DISPATCHES THE ABOVE ACTIONS */
 export const fetchPosts = () => {
   return async (dispatch) => {
     dispatch(fetchPostsStart());
@@ -30,7 +29,7 @@ export const fetchPosts = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Could not fetch cart data!");
+        throw new Error("Could not fetch posts data!");
       }
 
       const data = await response.json();

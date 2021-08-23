@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import * as actions from "../redux/side-nav/side-nav.action";
+import * as actions from "../../redux/side-nav/side-nav.action";
 
 import "./Header.scss";
 
 //import { fetchPosts } from "../redux/posts/posts.actions";
 
-const Header = () => {
+const Header = () => { 
   const dispatch = useDispatch();
   const show = useSelector((state) => state.sideNav.opened);
   // const { posts, isFetching, errorMessage } = useSelector(
