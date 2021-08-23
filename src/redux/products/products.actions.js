@@ -24,18 +24,15 @@ export const fetchProductsFailure = (errorMessage) => {
 export const fetchAllProducts = () => {
   return async (dispatch) => {
     dispatch(fetchProductsStart());
+
     const fetchData = async () => {
       const response = await client.product.fetchAll();
-      console.log("response: ", response);
-      if (!response.ok) {
-        throw new Error("Could not fetch data!");
-      }
-
       return response;
     };
 
     try {
       const products = await fetchData();
+      //const products = await client.product.fetchAll();
       dispatch(fetchProductsSuccess(products));
     } catch (error) {
       dispatch(fetchProductsFailure(error.message));
