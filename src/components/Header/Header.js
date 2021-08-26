@@ -7,7 +7,7 @@ import "./Header.scss";
 
 //import { fetchPosts } from "../redux/posts/posts.actions";
 
-const Header = () => { 
+const Header = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.sideNav.opened);
   // const { posts, isFetching, errorMessage } = useSelector(
@@ -36,11 +36,11 @@ const Header = () => {
   // useEffect(() => {
   //   dispatch(fetchPosts());
   // }, [dispatch]);
-  
+
   return (
     <>
       <AnnouncementBar />
-      <header className="header header1">
+      <header className="header header1" data-testid="header">
         <div className="header1__logo">
           <div className="header1__logo-image">
             <a href="/link">
@@ -89,8 +89,10 @@ const Header = () => {
               onClick={openSearchBarHandler}
               aria-label="Search"
               href="/cart"
+              data-testid="search-icon"
             >
               <i
+                data-testid="fa-times"
                 className={`fas ${openSearchBar ? "fa-times" : "fa-search"}`}
                 aria-hidden="true"
               ></i>
@@ -107,6 +109,7 @@ const Header = () => {
         <div className="header1__collections-burger">
           <div
             onClick={openDrawerHandler}
+            data-testid="hamburger"
             className={`header1__collections-burger menu-btn ${
               openDrawer ? "open" : ""
             }`}
@@ -116,7 +119,10 @@ const Header = () => {
         </div>
 
         <Drawer id={"navigation"} openDrawer={openDrawer}>
-          <ul className={`${openDrawer ? "drawer--active" : ""}`}>
+          <ul
+            data-testid="drawer"
+            className={`${openDrawer ? "drawer--active" : ""}`}
+          >
             <li>
               <a href="#">Home</a>
             </li>

@@ -1,0 +1,21 @@
+.spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25%;
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border-radius: 49%;
+    border: 10px solid gainsboro;
+    border-top-color: var(--red);
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
