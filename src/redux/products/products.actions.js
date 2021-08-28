@@ -32,7 +32,6 @@ export const fetchAllProducts = () => {
 
     try {
       const products = await fetchData();
-      //const products = await client.product.fetchAll();
       dispatch(fetchProductsSuccess(products));
     } catch (error) {
       dispatch(fetchProductsFailure(error.message));

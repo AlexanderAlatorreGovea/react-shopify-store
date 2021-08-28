@@ -1,16 +1,20 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
+import { RootState } from "../../redux/store";
 import { fetchAllProducts } from "../../redux/products/products.actions";
 import Spinner from "../Spinner/Spinner";
+ 
+import { useAppSelector, useAppDispatch } from '../../utils/hooks';
 
-const Products = () => {
-  const dispatch = useDispatch(); 
+const Products: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const { products, isFetching, errorMessage } = useSelector(
-    (state) => state.products
-  );
+  const {
+    products,
+    isFetching, 
+    errorMessage,
+  } = useAppSelector((state: RootState) => state.products);
 
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -21,7 +25,8 @@ const Products = () => {
       {isFetching ? (
         <Spinner />
       ) : (
-       products && products.map((product) => {
+        products &&
+        products.map((product) => {
           return (
             <div className="product__wrapper" key={product.id}>
               <img width="300" height="300" src={`${product.images[0].src}`} />
@@ -30,7 +35,9 @@ const Products = () => {
           );
         })
       )}
-      {errorMessage && <p>{`Server responded with the following error: ${errorMessage}`}</p>}
+      {errorMessage && (
+        <p>{`Server responded with the following error: ${errorMessage}`}</p>
+      )}
     </div>
   );
 };

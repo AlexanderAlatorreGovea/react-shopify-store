@@ -9,3 +9,4 @@ export default combineReducers({
   posts: postsReducer,
   products: productsReducer
 });
+ 

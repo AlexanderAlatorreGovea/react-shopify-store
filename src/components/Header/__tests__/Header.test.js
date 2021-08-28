@@ -12,7 +12,7 @@ const MockHeader = () => {
     </ReduxProvider>
   );
 };
- 
+
 describe("Header component", () => {
   it("should render the header component with the class of header", () => {
     //Arrange
@@ -34,7 +34,7 @@ describe("Header component", () => {
 
     //Assert
     const drawer = screen.getByTestId(/drawer/i);
-    
+
     expect(drawer).toBeInTheDocument();
     expect(drawer).toHaveClass("drawer--active");
   });
@@ -48,7 +48,7 @@ describe("Header component", () => {
 
     //Assert
     const icon = screen.getByTestId(/fa-times/i);
-    
+
     expect(icon).toBeInTheDocument();
     expect(icon).toHaveClass("fa-times");
   });
