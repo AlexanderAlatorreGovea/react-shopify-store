@@ -4,17 +4,21 @@ import { useEffect } from "react";
 import { RootState } from "../../redux/store";
 import { fetchAllProducts } from "../../redux/products/products.actions";
 import Spinner from "../Spinner/Spinner";
- 
-import { useAppSelector, useAppDispatch } from '../../utils/hooks';
 
-const Products: React.FC = () => {
+import { useAppSelector, useAppDispatch } from "../../utils/hooks";
+
+interface IProps {
+  products: [] | null;
+  isFetching: Boolean;
+  errorMessage: string;
+}
+
+const Products: React.FC<IProps> = () => {
   const dispatch = useAppDispatch();
 
-  const {
-    products,
-    isFetching, 
-    errorMessage,
-  } = useAppSelector((state: RootState) => state.products);
+  const { products, isFetching, errorMessage } = useAppSelector(
+    (state: RootState) => state.products
+  );
 
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -26,7 +30,7 @@ const Products: React.FC = () => {
         <Spinner />
       ) : (
         products &&
-        products.map((product) => {
+        products?.map((product) => {
           return (
             <div className="product__wrapper" key={product.id}>
               <img width="300" height="300" src={`${product.images[0].src}`} />

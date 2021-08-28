@@ -1,7 +1,15 @@
 import PRODUCTS_ACTION_TYPES from "./types";
+import { Interface } from "readline";
 
-const INITIAL_STATE = {
+interface IProducts {
   products: null,
+  isFetching: Boolean,
+  errorMessage?: undefined | string 
+}
+
+
+const INITIAL_STATE: IProducts = {
+  products: [],
   isFetching: false,
   errorMessage: undefined,
 };

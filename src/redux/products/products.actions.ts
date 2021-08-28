@@ -7,14 +7,14 @@ export const fetchProductsStart = () => {
   };
 };
 
-export const fetchProductsSuccess = (posts) => {
+export const fetchProductsSuccess = posts => {
   return {
     type: PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS,
     payload: posts,
   };
 };
 
-export const fetchProductsFailure = (errorMessage) => {
+export const fetchProductsFailure = errorMessage => {
   return {
     type: PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_FAILURE,
     payload: errorMessage,
@@ -22,7 +22,7 @@ export const fetchProductsFailure = (errorMessage) => {
 };
 
 export const fetchAllProducts = () => {
-  return async (dispatch) => {
+  return async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     dispatch(fetchProductsStart());
 
     const fetchData = async () => {

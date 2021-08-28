@@ -147,7 +147,7 @@ const Header = () => {
 
 const Drawer = ({ children, openDrawer, id }) => {
   return (
-    <div
+    <aside
       id={id}
       role="navigation"
       className="drawer"
@@ -155,7 +155,7 @@ const Drawer = ({ children, openDrawer, id }) => {
       tabIndex="0"
     >
       {children}
-    </div>
+    </aside>
   );
 };
 
