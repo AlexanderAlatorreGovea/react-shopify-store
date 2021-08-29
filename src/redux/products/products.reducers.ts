@@ -1,16 +1,15 @@
 import PRODUCTS_ACTION_TYPES from "./types";
 import { ProductsAsync } from "../../models/products/actions";
-import ProductsActionTypes from "../../models/products/index";
 
 const INITIAL_STATE: ProductsAsync = {
   products: null,
   isFetching: false,
   errorMessage: undefined,
 };
-console.log(ProductsActionTypes);
+
 const productsReducer = (
   state = INITIAL_STATE,
-  action: ProductsActionTypes
+  action: { type: any; payload: any }
 ): ProductsAsync => {
   switch (action.type) {
     case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START:

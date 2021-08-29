@@ -1,12 +1,19 @@
+import { ThunkAction } from "redux-thunk";
+import { RootProps } from "../../redux/store";
 import {
   FetchProductsStart,
   FetchProductsSuccess,
   FetchProductsFailure,
 } from "./actions";
 
-type ProductsActionTypes =
-  FetchProductsStart
+export type ProductsActionTypes =
+  | FetchProductsStart
   | FetchProductsSuccess
   | FetchProductsFailure;
 
-export default ProductsActionTypes;
+export type ProductsThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootProps,
+  null,
+  ProductsActionTypes
+>;

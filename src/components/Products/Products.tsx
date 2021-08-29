@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 //import { Link } from "react-router-dom";
+import { ThunkDispatch } from "redux-thunk";
+import { useDispatch } from "react-redux";
 
 import { RootState } from "../../redux/store";
 import { fetchAllProducts } from "../../redux/products/products.actions";
 import Spinner from "../Spinner/Spinner";
 
-import { useAppSelector, useAppDispatch } from "../../utils/hooks";
-
+import { useAppSelector, useThunkDispatch } from "../../utils/hooks";
 
 const Products: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const dispatch: ThunkDispatch<RootState, null, any> = useThunkDispatch();
 
   const { products, isFetching, errorMessage } = useAppSelector(
     (state: RootState) => state.products

@@ -1,15 +1,13 @@
+import { IProducts } from './../../models/products/Products';
 import PRODUCTS_ACTION_TYPES from "./types";
 import client from "../../config/shopify.client";
-import { IProducts } from "../../models/products/Products";
 import {
   FetchProductsStart,
   FetchProductsSuccess,
   FetchProductsFailure,
 } from "../../models/products/actions";
 
-import ProductsActionTypes  from '../../models/products/index';
-
-import { Dispatch } from "redux";
+import { ProductsThunk } from "../../models/products/index";
 
 export const fetchProductsStart = (): FetchProductsStart => {
   return {
@@ -33,10 +31,10 @@ export const fetchProductsFailure = (
     type: PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_FAILURE,
     payload: errorMessage,
   };
-};
+}; 
 
-export const fetchAllProducts = () => {
-  return async (dispatch: Dispatch<ProductsActionTypes>) => {
+export const fetchAllProducts = (): ProductsThunk => {
+  return async (dispatch) => {
     dispatch(fetchProductsStart());
 
     const fetchData = async () => {

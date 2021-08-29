@@ -1,6 +1,6 @@
 import { IProducts } from "./Products";
 import PRODUCTS_ACTION_TYPES from "../../redux/products/types";
- 
+
 export interface ProductsAsync {
   products: null | IProducts[];
   isFetching: boolean;
