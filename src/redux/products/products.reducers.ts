@@ -1,20 +1,17 @@
 import PRODUCTS_ACTION_TYPES from "./types";
-import { Interface } from "readline";
+import { ProductsAsync } from "../../models/products/actions";
+import ProductsActionTypes from "../../models/products/index";
 
-interface IProducts {
+const INITIAL_STATE: ProductsAsync = {
   products: null,
-  isFetching: Boolean,
-  errorMessage?: undefined | string 
-}
-
-
-const INITIAL_STATE: IProducts = {
-  products: [],
   isFetching: false,
   errorMessage: undefined,
 };
-
-const productsReducer = (state = INITIAL_STATE, action) => {
+console.log(ProductsActionTypes);
+const productsReducer = (
+  state = INITIAL_STATE,
+  action: ProductsActionTypes
+): ProductsAsync => {
   switch (action.type) {
     case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START:
       return {

@@ -7,13 +7,8 @@ import Spinner from "../Spinner/Spinner";
 
 import { useAppSelector, useAppDispatch } from "../../utils/hooks";
 
-interface IProps {
-  products: [] | null;
-  isFetching: Boolean;
-  errorMessage: string;
-}
 
-const Products: React.FC<IProps> = () => {
+const Products: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const { products, isFetching, errorMessage } = useAppSelector(
