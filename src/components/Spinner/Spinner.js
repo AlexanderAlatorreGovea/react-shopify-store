@@ -2,7 +2,7 @@ import React from "react";
 import "./Spinner.scss";
 
 const Spinner = () => {
-  return (
+  return ( 
     <div className="spinner-wrapper">
       <div className="spinner"></div>
     </div>

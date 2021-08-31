@@ -3,9 +3,6 @@
    License: none (public domain)
 */
 
-* {
-  box-sizing: border-box;
-}
 html,
 body,
 div,
@@ -91,7 +88,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: "Noto Sans JP", sans-serif;
+  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -108,16 +105,12 @@ nav,
 section {
   display: block;
 }
-html, body {
+body {
   line-height: 1;
 }
 ol,
 ul {
   list-style: none;
-}
-a, button {
-  cursor: pointer;
-  transition: all .3s ease-in-out;
 }
 blockquote,
 q {
@@ -134,19 +127,3 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-

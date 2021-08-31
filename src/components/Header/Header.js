@@ -117,7 +117,7 @@ const Header = () => {
             <div className="header1__collections-burger menu-btn__burger"></div>
           </div>
         </div>
-
+ 
         <Drawer id={"navigation"} openDrawer={openDrawer}>
           <ul
             data-testid="drawer"
