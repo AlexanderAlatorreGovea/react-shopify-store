@@ -20,7 +20,7 @@ const Products: React.FC = () => {
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
-
+ 
   return (
     <div className="products" data-testid="products">
       <div className="products__wrapper">
@@ -47,7 +47,7 @@ const Products: React.FC = () => {
         )}
       </div>
       {errorMessage && (
-        <p>{`Server responded with the following error: ${errorMessage}`}</p>
+        <p data-testid="error">{`Server responded with the following error: ${errorMessage}`}</p>
       )}
     </div>
   );
