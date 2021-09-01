@@ -12,7 +12,7 @@ import "./Products.scss";
 
 const Products: React.FC = () => {
   const dispatch: ThunkDispatch<RootState, null, any> = useThunkDispatch();
- 
+
   const { products, isFetching, errorMessage } = useAppSelector(
     (state: RootState) => state.products
   );
@@ -30,7 +30,11 @@ const Products: React.FC = () => {
           products &&
           products?.map((product) => {
             return (
-              <div className="products__wrapper--container" key={product.id}>
+              <div
+                className="products__wrapper--container"
+                key={product.id}
+                data-testid="product-wrapper"
+              >
                 <img
                   width="300"
                   height="300"
