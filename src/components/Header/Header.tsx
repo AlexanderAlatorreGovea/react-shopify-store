@@ -1,5 +1,6 @@
+import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, DefaultRootState } from "react-redux";
 
 import * as actions from "../../redux/side-nav/side-nav.action";
 
@@ -9,7 +10,8 @@ import "./Header.scss";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const show = useSelector((state) => state.sideNav.opened);
+  const show = useSelector((state): DefaultRootState => state.sideNav.opened);
+  
   // const { posts, isFetching, errorMessage } = useSelector(
   //   (state) => state.posts
   // );
@@ -28,8 +30,7 @@ const Header = () => {
     setOpenDrawer(!openDrawer);
   };
 
-  const openSearchBarHandler = (e) => {
-    e.preventDefault();
+  const openSearchBarHandler = (): void => {
     setOpenSearchBar(!openSearchBar);
   };
 
@@ -38,9 +39,9 @@ const Header = () => {
   // }, [dispatch]);
 
   return (
-    <>
+    <div>
       <AnnouncementBar />
-      <header className="header header1" data-testid="header">
+      <header onClick={showNav} className="header header1" data-testid="header">
         <div className="header1__logo">
           <div className="header1__logo-image">
             <a href="/link">
@@ -117,7 +118,7 @@ const Header = () => {
             <div className="header1__collections-burger menu-btn__burger"></div>
           </div>
         </div>
- 
+
         <Drawer id={"navigation"} openDrawer={openDrawer}>
           <ul
             data-testid="drawer"
@@ -141,7 +142,7 @@ const Header = () => {
           </ul>
         </Drawer>
       </header>
-    </>
+    </div>
   );
 };
 
@@ -152,7 +153,7 @@ const Drawer = ({ children, openDrawer, id }) => {
       role="navigation"
       className="drawer"
       aria-hidden={openDrawer ? "false" : "true"}
-      tabIndex="0"
+      tabIndex={0}
     >
       {children}
     </aside>

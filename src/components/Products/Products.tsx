@@ -36,8 +36,6 @@ const Products: React.FC = () => {
                 data-testid="product-wrapper"
               >
                 <img
-                  width="300"
-                  height="300"
                   src={`${product.images[0].src}`}
                 />
                 <p>{product.title}</p>
