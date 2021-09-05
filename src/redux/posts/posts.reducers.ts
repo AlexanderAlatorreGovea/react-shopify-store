@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   errorMessage: undefined
 };
 
-const postsReducer = (state = INITIAL_STATE, action) => {
+const postsReducer = (state = INITIAL_STATE, action: { type: any; payload: any; }) => {
   switch (action.type) {
     case POSTS_ACTION_TYPES.FETCH_POSTS_START:
       return {

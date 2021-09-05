@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   opened: false,
 };
 
-const sideNavReducer = (state = INITIAL_STATE, action) => {
+const sideNavReducer = (state = INITIAL_STATE, action: { type: string }) => {
   switch (action.type) {
     case SIDE_NAV_TYPES.OPEN_SIDENAV:
       return {

@@ -11,7 +11,7 @@ import "./Header.scss";
 const Header = () => {
   const dispatch = useDispatch();
   const show = useSelector((state): DefaultRootState => state.sideNav.opened);
-  
+
   // const { posts, isFetching, errorMessage } = useSelector(
   //   (state) => state.posts
   // );

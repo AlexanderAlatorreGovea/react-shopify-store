@@ -6,14 +6,14 @@ export const fetchPostsStart = () => {
   };
 };
 
-export const fetchPostsSuccess = (posts) => {
+export const fetchPostsSuccess = (posts: any) => {
   return {
     type: POSTS_ACTION_TYPES.FETCH_POSTS_SUCCESS,
     payload: posts,
   };
 };
 
-export const fetchPostsFailure = (errorMessage) => {
+export const fetchPostsFailure = (errorMessage: any) => {
   return {
     type: POSTS_ACTION_TYPES.FETCH_POSTS_FAILURE,
     payload: errorMessage,
@@ -21,7 +21,7 @@ export const fetchPostsFailure = (errorMessage) => {
 };
 
 export const fetchPosts = () => {
-  return async (dispatch) => {
+  return async (dispatch: (arg0: { type: string; payload?: any; }) => void) => {
     dispatch(fetchPostsStart());
     const fetchData = async () => {
       const response = await fetch(
