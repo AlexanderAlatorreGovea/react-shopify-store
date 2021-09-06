@@ -1,6 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
+
+import CustomButton from "../../components/CustomButton/CustomButton";
 import FormInput from "../../components/FormInput/FormInput";
 import PageTitle from "../../components/PageTitle/PageTitle";
+
+import './SignUpPage.scss';
 
 const SignUpPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -11,9 +15,9 @@ const SignUpPage: React.FC = () => {
   const handleChange = (): void => {};
 
   return (
-    <div className="sign-in">
-      <PageTitle className="sign-in">Sign Up Form</PageTitle>
-      <h2>Sign in with your email and password</h2>
+    <div className="sign-up">
+      <PageTitle classes="sign-up__title">Sign Up Form</PageTitle>
+      <h2>Already have an account?</h2>
       <form onSubmit={handleSubmit}>
         <FormInput
           name="email"
@@ -31,8 +35,10 @@ const SignUpPage: React.FC = () => {
           label="password"
           required
         />
-        <div className="buttons">
-          <button>Sign In</button>
+        <div className="sign-up__buttons">
+          <CustomButton  type='submit'>
+          Sign in
+          </CustomButton>
         </div>
       </form>
     </div>

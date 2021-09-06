@@ -1,6 +1,6 @@
 .products {
   &__wrapper {
-    max-width: 1400px;
+    max-width: var(--desktop-width);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
