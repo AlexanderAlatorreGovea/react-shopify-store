@@ -4,19 +4,57 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import FormInput from "../../components/FormInput/FormInput";
 import PageTitle from "../../components/PageTitle/PageTitle";
 
-import './SignUpPage.scss';
+import "./SignUpPage.scss";
+
+interface ICredentials {
+    email: string;
+    password: string;
+}
 
 const SignUpPage: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
+  const [userCredentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = (): void => {};
+  const { email, password } = userCredentials;
 
-  const handleChange = (): void => {};
+  const handleSubmit = (event): void => {
+    event.preventDefault();
+
+    const emailAndPassword: ICredentials = {
+      email,
+      password,
+    };
+
+    if (email.trim().length === 0 || password.trim().length < 8) {
+      alert("Please Provide an Email or password");
+      return;
+    }
+
+    setCredentials((prevState: ICredentials) => {
+      return {
+        ...prevState,
+        email: "",
+        password: "",
+      };
+    });
+  };
+
+  const handleChange = (event): void => {
+    const { value, name } = event.target;
+
+    setCredentials((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
 
   return (
     <div className="sign-up">
-      <PageTitle classes="sign-up__title">Sign Up Form</PageTitle>
+      <PageTitle className="sign-up__title">Sign Up Form</PageTitle>
       <h2>Already have an account?</h2>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -36,9 +74,7 @@ const SignUpPage: React.FC = () => {
           required
         />
         <div className="sign-up__buttons">
-          <CustomButton  type='submit'>
-          Sign in
-          </CustomButton>
+          <CustomButton type="submit">Sign in</CustomButton>
         </div>
       </form>
     </div>

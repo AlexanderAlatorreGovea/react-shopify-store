@@ -31,7 +31,7 @@ const Products: React.FC = () => {
           products?.map((product) => {
             return (
               <div
-                className="products__wrapper--container"
+                className="products__container"
                 key={product.id}
                 data-testid="product-wrapper"
               >
