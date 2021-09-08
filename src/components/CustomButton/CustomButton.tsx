@@ -5,9 +5,9 @@ interface IProps {
   [x: string]: any;
   children?: any;
   isGoogleSignIn?: boolean;
-  inverted?: boolean;
+  inverted?: boolean; 
   otherProps?: any
-  onClick?: Function
+  onClick?: () => void
 }
 
 const CustomButton: React.FC<IProps> = ({

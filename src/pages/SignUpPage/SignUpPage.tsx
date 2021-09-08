@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CustomButton from "../../components/CustomButton/CustomButton";
+import ErrorModal from "../../components/ErrorModal/ErrorModal";
 import FormInput from "../../components/FormInput/FormInput";
 import PageTitle from "../../components/PageTitle/PageTitle";
 
 import "./SignUpPage.scss";
 
 interface ICredentials {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 const SignUpPage: React.FC = () => {
@@ -17,18 +18,20 @@ const SignUpPage: React.FC = () => {
     password: "",
   });
 
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  const [error, setError] = useState(false);
+  const [closedModal, setClosedModal] = useState(false);
+
   const { email, password } = userCredentials;
+
+  const setErrorHandler = (): void => setError(true);
 
   const handleSubmit = (event): void => {
     event.preventDefault();
 
-    const emailAndPassword: ICredentials = {
-      email,
-      password,
-    };
-
-    if (email.trim().length === 0 || password.trim().length < 8) {
-      alert("Please Provide an Email or password");
+    if (formIsValid === false) {
+      setErrorHandler();
       return;
     }
 
@@ -39,6 +42,20 @@ const SignUpPage: React.FC = () => {
         password: "",
       };
     });
+  };
+
+  useEffect(() => {
+   const identifier =  setTimeout(() => {
+      setFormIsValid(email.includes("@") && password.trim().length > 8);
+    }, 500);
+
+    return () => {
+      clearTimeout(identifier)
+    }
+  }, [email, password]);
+
+  const closedModalHandler = (): void => {
+    setClosedModal(!closedModal);
   };
 
   const handleChange = (event): void => {
@@ -73,8 +90,20 @@ const SignUpPage: React.FC = () => {
           label="password"
           required
         />
+        {error && !closedModal ? (
+          <ErrorModal
+            closeModalHandler={closedModalHandler}
+            data-testid="error"
+            title="An error ocurred!"
+            message="Please enter a correct email or password"
+          />
+        ) : (
+          ""
+        )}
         <div className="sign-up__buttons">
-          <CustomButton type="submit">Sign in</CustomButton>
+          <CustomButton closedModalHandler={closedModalHandler} type="submit">
+            Sign in
+          </CustomButton>
         </div>
       </form>
     </div>

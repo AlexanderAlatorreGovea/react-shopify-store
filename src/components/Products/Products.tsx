@@ -47,16 +47,6 @@ const Products: React.FC = () => {
             })
           )} 
         </div>
-        {!closedModal ? (
-          <ErrorModal
-            closeModalHandler={closedModalHandler}
-            data-testid="error"
-            title="An error ocurred!"
-            message="Try again later"
-          />
-        ) : (
-          ""
-        )}
         {errorMessage && !closedModal ? (
           <ErrorModal
             closeModalHandler={closedModalHandler}
