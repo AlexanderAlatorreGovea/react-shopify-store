@@ -8,7 +8,7 @@ interface IProps {
   inverted?: boolean; 
   otherProps?: any
   onClick?: () => void
-}
+} 
 
 const CustomButton: React.FC<IProps> = ({
   children,

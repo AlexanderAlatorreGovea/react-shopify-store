@@ -84,7 +84,7 @@ const SignUpPage: React.FC = () => {
         />
         <FormInput
           name="password"
-          type="password"
+          type="password" 
           value={password}
           handleChange={handleChange}
           label="password"
@@ -92,16 +92,17 @@ const SignUpPage: React.FC = () => {
         />
         {error && !closedModal ? (
           <ErrorModal
+            variable={'hello'}
             closeModalHandler={closedModalHandler}
             data-testid="error"
             title="An error ocurred!"
             message="Please enter a correct email or password"
-          />
+          /> 
         ) : (
           ""
         )}
         <div className="sign-up__buttons">
-          <CustomButton closedModalHandler={closedModalHandler} type="submit">
+          <CustomButton onClick={handleSubmit}  type="submit">
             Sign in
           </CustomButton>
         </div>
