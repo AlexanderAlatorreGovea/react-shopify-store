@@ -17,7 +17,7 @@ const CustomButton: React.FC<IProps> = ({
   inverted,
   ...otherProps
 }) => {
-  //you have access to ctx.isLoggedIn
+  
   const ctx = useContext(AuthContext);
   return (
       <button
