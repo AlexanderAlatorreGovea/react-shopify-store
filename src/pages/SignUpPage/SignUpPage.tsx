@@ -79,7 +79,7 @@ const SignUpPage: React.FC = () => {
           type="email"
           handleChange={handleChange}
           value={email}
-          label="email"
+          label="email" 
           required
         />
         <FormInput
